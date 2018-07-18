@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>99ZF6PCPXJ.chungdev.FamilyFirst</string>
+	<string>99ZF6PCPXJ.lala.FamilyFirst</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>99ZF6PCPXJ.chungdev.FamilyFirst</string>
+		<string>99ZF6PCPXJ.lala.FamilyFirst</string>
 	</array>
 </dict>
 </plist>

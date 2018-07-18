@@ -6,13 +6,18 @@
 //  Copyright © 2018 Christopher Chung. All rights reserved.
 //
 
+
+
 import UIKit
 import MapKit
 import CoreLocation
 
 
 class SeeFamilyViewController: UIViewController {
+    let locationManager = CLLocationManager()
     
+    
+//    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     var people:[String] = []
     var allColors = [UIColor.red, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple, UIColor.black]
     
@@ -22,29 +27,44 @@ class SeeFamilyViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
-//    let noLocation = CLLocationCoordinate2D()
-//    let viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 200, 200)
-//    mapView.setRegion(viewRegion, animated: false)
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        mapView.delegate = self as! MKMapViewDelegate
-//        mapView.showsUserLocation = true
-        
-        
+        mapView.showsUserLocation = true
+        enableBasicLocationServices()
     }
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        let location = locations.last as CLLocation
-//
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//
-//        self.map.setRegion(region, animated: true)
-//    }
+    func enableBasicLocationServices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            print("Disable Location Based Features")
+            break
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Enable location features
+            print("Enable When In Use Features")
+            startMonitoringLocation()
+            break
+        }
+    }
+    
+    func startMonitoringLocation(){
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 1.0  // In meters.
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+    }
+
+    
+    
 
 }
 
@@ -60,4 +80,49 @@ extension SeeFamilyViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+
+
+extension SeeFamilyViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied:
+            // Disable location features
+            print("Disable Location Based Features")
+            break
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Enable location features
+            print("Enable When In Use Features")
+            startMonitoringLocation()
+            break
+            
+        case .notDetermined:
+            print("Location Based Features notDetermined")
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
+        let lastLocation = locations.last!
+        print(lastLocation.coordinate)
+        // Do something with the location.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        UIView.animate(withDuration: 0.5) {
+            let angle = newHeading.trueHeading // convert from degrees to radians
+            print(angle)
+        }
+    }
+}
+
+extension Double {
+    var toRadians: Double { return self * .pi / 180 }
+    var toDegrees: Double { return self * 180 / .pi }
+}
+
+
 

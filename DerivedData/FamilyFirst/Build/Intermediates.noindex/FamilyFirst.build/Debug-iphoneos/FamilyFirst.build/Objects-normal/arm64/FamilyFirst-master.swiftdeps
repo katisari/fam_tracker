@@ -1,7 +1,9 @@
 version: "Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)"
-options: "8ed2c3b28afba7d596d3ca46b8e855d0"
-build_time: [1531864986, 918877000]
+options: "34a1782106d3b80938fb1a9fdc6580dc"
+build_time: [1531888101, 621393000]
 inputs:
-  "/Users/katielee/Desktop/family_first/FamilyFirst/SeeFamilyViewController.swift": [1531864870, 0]
-  "/Users/katielee/Desktop/family_first/FamilyFirst/customCell.swift": [1531861454, 0]
-  "/Users/katielee/Desktop/family_first/FamilyFirst/AppDelegate.swift": [1531860643, 0]
+  "/Users/katielee/Desktop/fam_trackr/FamilyFirst/SeeFamilyViewController.swift": !dirty [1531886743, 0]
+  "/Users/katielee/Desktop/fam_trackr/FamilyFirst/MapViewControlller.swift": !dirty [1531884188, 0]
+  "/Users/katielee/Desktop/fam_trackr/FamilyFirst/customCell.swift": !dirty [1531877529, 0]
+  "/Users/katielee/Desktop/fam_trackr/FamilyFirst/LoginViewController.swift": !dirty [1531877529, 0]
+  "/Users/katielee/Desktop/fam_trackr/FamilyFirst/AppDelegate.swift": !dirty [1531877529, 0]

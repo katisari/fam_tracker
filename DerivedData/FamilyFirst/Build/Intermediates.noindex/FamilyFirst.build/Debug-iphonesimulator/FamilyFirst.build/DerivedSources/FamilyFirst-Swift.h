@@ -165,6 +165,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_feature(modules)
 @import UIKit;
 @import Foundation;
+@import CoreLocation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -197,13 +198,24 @@ SWIFT_CLASS("_TtC11FamilyFirst11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-@class MKMapView;
 @class NSBundle;
 @class NSCoder;
 
+SWIFT_CLASS("_TtC11FamilyFirst19LoginViewController")
+@interface LoginViewController : UIViewController
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIBarButtonItem;
+@class UITableView;
+@class MKMapView;
+
 SWIFT_CLASS("_TtC11FamilyFirst23SeeFamilyViewController")
 @interface SeeFamilyViewController : UIViewController
+- (IBAction)addButtonPressed:(UIBarButtonItem * _Nonnull)sender;
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 - (void)viewDidLoad;
@@ -216,6 +228,16 @@ SWIFT_CLASS("_TtC11FamilyFirst23SeeFamilyViewController")
 @interface SeeFamilyViewController (SWIFT_EXTENSION(FamilyFirst)) <UITableViewDataSource, UITableViewDelegate>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class CLLocationManager;
+@class CLLocation;
+@class CLHeading;
+
+@interface SeeFamilyViewController (SWIFT_EXTENSION(FamilyFirst)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateHeading:(CLHeading * _Nonnull)newHeading;
 @end
 
 @class UILabel;

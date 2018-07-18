@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3504288320FE9022005E955D /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504288220FE9022005E955D /* customCell.swift */; };
+		354CA75E20FEE9960083D5E5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354CA75D20FEE9960083D5E5 /* MapKit.framework */; };
+		354CA76220FEEFFF0083D5E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354CA76120FEEFFF0083D5E5 /* CoreLocation.framework */; };
 		83433E0420FE8D29004B8BC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83433E0320FE8D29004B8BC3 /* AppDelegate.swift */; };
 		83433E0620FE8D29004B8BC3 /* SeeFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83433E0520FE8D29004B8BC3 /* SeeFamilyViewController.swift */; };
 		83433E0920FE8D29004B8BC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83433E0720FE8D29004B8BC3 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		3504288220FE9022005E955D /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
+		354CA75D20FEE9960083D5E5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		354CA76120FEEFFF0083D5E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		83433E0020FE8D29004B8BC3 /* FamilyFirst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyFirst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83433E0320FE8D29004B8BC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83433E0520FE8D29004B8BC3 /* SeeFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeFamilyViewController.swift; sourceTree = "<group>"; };
@@ -35,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				354CA76220FEEFFF0083D5E5 /* CoreLocation.framework in Frameworks */,
+				354CA75E20FEE9960083D5E5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		354CA75C20FEE9960083D5E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				354CA76120FEEFFF0083D5E5 /* CoreLocation.framework */,
+				354CA75D20FEE9960083D5E5 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		83433DF720FE8D28004B8BC3 = {
 			isa = PBXGroup;
 			children = (
 				83433E0220FE8D29004B8BC3 /* FamilyFirst */,
 				83433E0120FE8D29004B8BC3 /* Products */,
+				354CA75C20FEE9960083D5E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,14 +309,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5D4ZVQW9T;
+				DEVELOPMENT_TEAM = 99ZF6PCPXJ;
 				INFOPLIST_FILE = FamilyFirst/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chungdev.FamilyFirst;
+				PRODUCT_BUNDLE_IDENTIFIER = lala.FamilyFirst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,14 +328,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5D4ZVQW9T;
+				DEVELOPMENT_TEAM = 99ZF6PCPXJ;
 				INFOPLIST_FILE = FamilyFirst/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chungdev.FamilyFirst;
+				PRODUCT_BUNDLE_IDENTIFIER = lala.FamilyFirst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
