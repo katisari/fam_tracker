@@ -13,9 +13,13 @@ import CoreLocation
 
 class SeeFamilyViewController: UIViewController {
     
-    var people:[String] = []
+    var index = 0
+    let people = ["My Son", "My daughter"]
     var allColors = [UIColor.red, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple, UIColor.black]
     
+    let coords = [CLLocation(latitude: 37.3688, longitude: -122.0363),
+        CLLocation(latitude: 37.248658, longitude: -121.8863)
+    ]
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "AddSegue", sender: self)
     }
@@ -32,19 +36,71 @@ class SeeFamilyViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        mapView.delegate = self as! MKMapViewDelegate
-//        mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
+        mapView.delegate = self
+        addAnnotations(coords: coords)
+        enableBasicLocationServices()
+        addRadiusCircle(location: CLLocation(latitude: 37.3688, longitude: -122.0363))
+        
+    }
+    func enableBasicLocationServices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            print("Disable Location Based Features")
+            break
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Enable location features
+            print("Enable When In Use Features")
+            startMonitoringLocation()
+            break
+        }
+    }
+    
+    func startMonitoringLocation(){
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 1.0  // In meters.
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+    }
+    func addAnnotations(coords: [CLLocation]){
+        for coord in coords{
+            let CLLCoordType = CLLocationCoordinate2D(latitude: coord.coordinate.latitude,
+                                                      longitude: coord.coordinate.longitude);
+            let anno = MKPointAnnotation();
+            anno.coordinate = CLLCoordType;
+            anno.title = people[index]
+            mapView.addAnnotation(anno);
+            index += 1
+        }
         
         
     }
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        let location = locations.last as CLLocation
-//
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//
-//        self.map.setRegion(region, animated: true)
-//    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation{
+            return nil;
+        }else{
+            let pinIdent = "Pin";
+            var pinView: MKPinAnnotationView;
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: pinIdent) as? MKPinAnnotationView {
+                dequeuedView.annotation = annotation;
+                pinView = dequeuedView;
+            }else{
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: pinIdent);
+                
+            }
+            return pinView;
+        }
+    }
 
 }
 
@@ -59,5 +115,48 @@ extension SeeFamilyViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+}
+
+
+
+extension SeeFamilyViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied:
+            // Disable location features
+            print("Disable Location Based Features")
+            break
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Enable location features
+            print("Enable When In Use Features")
+            startMonitoringLocation()
+            break
+            
+        case .notDetermined:
+            print("Location Based Features notDetermined")
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
+        let lastLocation = locations.last!
+        print(lastLocation.coordinate)
+        // Do something with the location.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        UIView.animate(withDuration: 0.5) {
+            let angle = newHeading.trueHeading // convert from degrees to radians
+            print(angle)
+        }
+    }
+}
+
+extension Double {
+    var toRadians: Double { return self * .pi / 180 }
+    var toDegrees: Double { return self * 180 / .pi }
 }
 
