@@ -20,14 +20,14 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGb-By-u0I">
                                 <rect key="frame" x="0.0" y="314" width="414" height="422"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDH-3c-7lt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="250"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDH-3c-7lt">
+                                <rect key="frame" x="0.0" y="126" width="414" height="188"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="dA5-zO-yqC"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="Dt4-El-44p" customClass="customCell" customModule="FamilyFirst" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="Dt4-El-44p" customClass="customCell" customModule="FamilyFirst" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dt4-El-44p" id="Odr-xV-bGF" customClass="customCell" customModule="FamilyFirst" customModuleProvider="target">
@@ -57,16 +57,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Add Family" translatesAutoresizingMaskIntoConstraints="NO" id="Kv8-xp-lxL">
+                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7Bc-nF-ubD"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Kv8-xp-lxL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0MP-gS-zP9"/>
                             <constraint firstItem="NGb-By-u0I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3UB-Xq-Dcw"/>
                             <constraint firstItem="uDH-3c-7lt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DK6-fz-qlR"/>
                             <constraint firstItem="NGb-By-u0I" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ifo-Ak-hmV"/>
                             <constraint firstItem="uDH-3c-7lt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mox-9Z-uWy"/>
+                            <constraint firstItem="Kv8-xp-lxL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P66-8c-gtD"/>
                             <constraint firstItem="NGb-By-u0I" firstAttribute="top" secondItem="uDH-3c-7lt" secondAttribute="bottom" id="T8m-gU-N9j"/>
                             <constraint firstItem="uDH-3c-7lt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a3y-eI-TYE"/>
                             <constraint firstItem="NGb-By-u0I" firstAttribute="top" secondItem="uDH-3c-7lt" secondAttribute="bottom" id="nVm-a3-u3G"/>
+                            <constraint firstItem="Kv8-xp-lxL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vVP-4Q-8ab"/>
                             <constraint firstItem="NGb-By-u0I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yxY-h4-8Mh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -87,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288.80000000000001" y="281.10944527736132"/>
+            <point key="canvasLocation" x="288.40579710144931" y="280.43478260869568"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XWO-LR-1io">
